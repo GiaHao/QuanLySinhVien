@@ -1,0 +1,192 @@
+body {
+  font-family: 'Roboto', sans-serif; }
+
+.container-fluid {
+  padding-left: 0; }
+
+.myNav {
+  background-color: #354B45;
+  padding: 0; }
+  .myNav .fa {
+    font-size: 1.8rem;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px; }
+  .myNav .navbar-brand h2 {
+    font-family: 'Playfair Display', serif;
+    color: #60CDB5;
+    position: relative;
+    margin-top: 10px; }
+    .myNav .navbar-brand h2 span {
+      font-size: 1.3rem;
+      position: absolute;
+      top: 29px;
+      right: -30px; }
+  .myNav #navbarNav {
+    width: 100%; }
+    .myNav #navbarNav ul {
+      width: 100%; }
+    .myNav #navbarNav .nav-item {
+      position: relative;
+      -webkit-transition: .5s;
+      transition: .5s;
+      width: 100%; }
+      .myNav #navbarNav .nav-item .active {
+        background-color: #60CDB5;
+        color: #354B45 !important; }
+      .myNav #navbarNav .nav-item .nav-link {
+        border-radius: 0;
+        color: #fff;
+        padding: 12px 16px;
+        display: block;
+        z-index: 1; }
+      .myNav #navbarNav .nav-item:hover {
+        background-color: #60CDB5;
+        color: #354B45;
+        -webkit-transform: translateX(15px);
+        transform: translateX(15px); }
+
+.tab-pane {
+  background: url("../images/background.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: auto;
+  height: 100vh;
+  position: relative; }
+  .tab-pane .formSinhVien {
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 60%;
+    position: absolute;
+    top: 23%;
+    left: 23%;
+    padding: 20px; }
+    .tab-pane .formSinhVien .input-contain {
+      position: relative;
+      margin: 16px 0; }
+      .tab-pane .formSinhVien .input-contain input {
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid #354B45;
+        background-color: transparent;
+        outline: none;
+        width: 80%; }
+        .tab-pane .formSinhVien .input-contain input:focus ~ label, .tab-pane .formSinhVien .input-contain input:valid ~ label {
+          top: -10px;
+          left: 0;
+          font-size: .8rem;
+          color: #498AC6; }
+        .tab-pane .formSinhVien .input-contain input:focus ~ .highlight {
+          width: 80%; }
+      .tab-pane .formSinhVien .input-contain label {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        pointer-events: none;
+        color: #354B45;
+        -webkit-transition: .5s;
+        transition: .5s; }
+      .tab-pane .formSinhVien .input-contain .highlight {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: #498AC6;
+        -webkit-transition: .6s;
+        transition: .6s; }
+      .tab-pane .formSinhVien .input-contain p#thongbaoMSSV, .tab-pane .formSinhVien .input-contain p#thongbaoHoTen,
+      .tab-pane .formSinhVien .input-contain p#thongbaoEmail, .tab-pane .formSinhVien .input-contain p#thongbaoSDT,
+      .tab-pane .formSinhVien .input-contain p#thongbaoToan, .tab-pane .formSinhVien .input-contain p#thongbaoLy,
+      .tab-pane .formSinhVien .input-contain p#thongbaoHoa {
+        color: #d82525;
+        font-size: 15px;
+        font-style: italic; }
+    .tab-pane .formSinhVien #thongbaoChuyenNganh {
+      color: #d82525;
+      font-size: 15px;
+      font-style: italic; }
+    .tab-pane .formSinhVien .form-control {
+      max-width: 60%;
+      margin: 17px 0; }
+    .tab-pane .formSinhVien .btn {
+      border-radius: 0;
+      margin-right: 10px;
+      -webkit-box-shadow: 5px 10px 10px #354B45;
+      box-shadow: 5px 10px 10px #354B45; }
+      .tab-pane .formSinhVien .btn:active {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+        -webkit-box-shadow: 3px 5px 5px #354B45;
+        box-shadow: 3px 5px 5px #354B45; }
+
+#list {
+  position: relative; }
+  #list .contain {
+    position: absolute;
+    top: 80px;
+    left: 7%;
+    width: 90%; }
+    #list .contain .btnChucNang {
+      border-radius: 0;
+      margin-right: 10px;
+      -webkit-box-shadow: 5px 10px 10px #354B45;
+      box-shadow: 5px 10px 10px #354B45;
+      margin-top: 30px;
+      width: 120px;
+      display: inline-block; }
+      #list .contain .btnChucNang:active {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+        -webkit-box-shadow: 3px 5px 5px #354B45;
+        box-shadow: 3px 5px 5px #354B45; }
+    #list .contain .list-contain {
+      background-color: rgba(255, 255, 255, 0.8);
+      height: 350px;
+      overflow-y: auto; }
+  #list .myTable th {
+    vertical-align: middle; }
+  #list .modal-body .formSinhVien {
+    background-color: transparent;
+    width: 100%;
+    position: static;
+    padding: 20px; }
+    #list .modal-body .formSinhVien select {
+      max-width: 95%; }
+    #list .modal-body .formSinhVien .input-contain input {
+      width: 90%; }
+      #list .modal-body .formSinhVien .input-contain input:focus ~ .highlight {
+        width: 90%; }
+  #list .modal-footer .btn {
+    border-radius: 0;
+    margin-right: 10px;
+    -webkit-box-shadow: 5px 10px 10px #354B45;
+    box-shadow: 5px 10px 10px #354B45; }
+    #list .modal-footer .btn:active {
+      -webkit-transform: translateY(2px);
+      transform: translateY(2px);
+      -webkit-box-shadow: 3px 5px 5px #354B45;
+      box-shadow: 3px 5px 5px #354B45; }
+
+@media (min-width: 768px) {
+  .myNav {
+    height: 100vh;
+    width: 20%; } }
+@media (max-width: 767px) {
+  .myNav {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+    padding: 0 0 10px 10px;
+    margin-bottom: 10px; }
+    .myNav .navbar-collapse {
+      margin-top: 10px; }
+
+  .tab-pane .formSinhVien {
+    top: 15%;
+    margin: 30px 0; } }
+
+/*# sourceMappingURL=style.css.map */

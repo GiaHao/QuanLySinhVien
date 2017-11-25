@@ -1,0 +1,275 @@
+$bg-color: #354B45;
+$light-blue: #60CDB5;
+$blue: #498AC6;
+
+@mixin button() {
+  border-radius: 0;
+  margin-right: 10px;
+  -webkit-box-shadow: 5px 10px 10px $bg-color;
+          box-shadow: 5px 10px 10px $bg-color;
+
+  &:active {
+    -webkit-transform: translateY(2px);
+            transform: translateY(2px);
+    -webkit-box-shadow: 3px 5px 5px $bg-color;
+            box-shadow: 3px 5px 5px $bg-color;
+}
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container-fluid {
+  padding-left: 0;
+}
+
+// Phần menu
+.myNav {
+  background-color: $bg-color;
+  padding: 0;
+
+  .fa {
+    font-size: 1.8rem;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  .navbar-brand {
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: $light-blue;
+      position: relative;
+      margin-top: 10px;
+
+      span {
+        font-size: 1.3rem;
+        position: absolute;
+        top: 29px;
+        right: -30px;
+      }
+    }
+  }
+
+  #navbarNav {
+    width: 100%;
+
+    ul {
+      width: 100%;
+    }
+
+    .nav-item {
+      position: relative;
+      -webkit-transition: .5s;
+      transition: .5s;
+      width: 100%;
+     
+      .active {
+        background-color: $light-blue;
+        color: $bg-color !important;
+      }
+      
+      .nav-link {
+        border-radius: 0;
+        color: #fff;
+        padding: 12px 16px;
+        display: block;
+        z-index: 1;
+      }
+
+      &:hover {
+        background-color: $light-blue;
+        color: $bg-color;
+        -webkit-transform: translateX(15px);
+                transform: translateX(15px);
+      }
+    }
+  }
+}
+// Kết thúc phần menu
+
+// Phần nhập mới thông tin sinh viên
+.tab-pane {
+  background: url('../images/background.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: auto;
+  height: 100vh; 
+  position: relative;
+
+  .formSinhVien {
+    background-color: rgba(255, 255, 255, .7);
+    width: 60%;
+    position: absolute;
+    top: 23%;
+    left: 23%;
+    padding: 20px;
+
+    .input-contain {
+      position: relative;
+      margin: 16px 0;
+  
+      input {
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid $bg-color;
+        background-color: transparent;
+        outline: none;
+        width: 80%;
+
+        &:focus ~ label,
+        &:valid ~ label {
+          top: -10px;
+          left: 0;
+          font-size: .8rem;
+          color: $blue;
+        }
+
+        &:focus ~ .highlight {
+          width: 80%;
+        }
+      }
+
+
+      label {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        pointer-events: none;
+        color: $bg-color;
+        -webkit-transition: .5s;
+        transition: .5s;
+      }
+
+      .highlight {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: $blue;
+        -webkit-transition: .6s;
+        transition: .6s;
+      }
+
+      p#thongbaoMSSV, p#thongbaoHoTen, 
+      p#thongbaoEmail, p#thongbaoSDT, 
+      p#thongbaoToan, p#thongbaoLy, 
+      p#thongbaoHoa {
+        color: #d82525;
+        font-size: 15px;
+        font-style: italic;
+      }
+    }
+
+    #thongbaoChuyenNganh {
+      color: #d82525;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    .form-control {
+      max-width: 60%;
+      margin: 17px 0;
+    }
+
+    .btn {
+      @include button();
+    }
+  }  
+}
+// Kết thúc phần nhập mới thông tin sinh viên
+
+// Phần danh sách và chức năng
+#list {
+  position: relative;
+
+  .contain {
+    position: absolute;
+    top: 80px;
+    left: 7%;
+    width: 90%;
+
+    .btnChucNang {
+      @include button();
+      margin-top: 30px;
+      width: 120px; 
+      display: inline-block;
+    }
+
+    .list-contain {
+      background-color: rgba(255, 255, 255, .8);
+      height: 350px;
+      overflow-y: auto;
+    }
+  }
+
+  .myTable {
+    th {
+      vertical-align: middle;
+    }
+  }
+
+  .modal-body {
+    .formSinhVien {
+      background-color: transparent;
+      width: 100%;
+      position: static;
+      padding: 20px;
+
+      select {
+        max-width: 95%;
+      }
+
+      .input-contain {
+        input {
+          width: 90%;
+
+          &:focus ~ .highlight {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    .btn {
+      @include button();
+    }
+  }
+}
+
+
+@media (min-width: 768px) {
+  .myNav {
+    height: 100vh;
+    width: 20%;
+  }
+}
+
+@media (max-width: 767px) {
+  .myNav {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+    padding: 0 0 10px 10px;
+    margin-bottom: 10px;
+
+    .navbar-collapse {
+      margin-top: 10px;
+    }
+  }
+
+  .tab-pane {
+    .formSinhVien {
+      top: 15%;
+      margin: 30px 0;
+    }
+  }
+}

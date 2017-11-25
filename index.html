@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quản lý sinh viên</title>
+
+  <!-- Link css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="./css/animate.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Phần Menu -->
+      <div class="col-12 col-md-2 px-0">
+        <nav class="navbar navbar-expand-md flex-column myNav fixed-top">
+          <a class="navbar-brand mb-md-5" href="#">
+            <h2>Quản lý
+              <span>sinh viên</span>
+            </h2>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </button>
+          <div class="collapse navbar-collapse flex-column" id="navbarNav">
+            <ul class="nav nav-pills mb-3 flex-column" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" id="formNhap" href="#form" role="tab" aria-controls="pills-form" aria-selected="true">Nhập thông tin</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" id="danhSach" href="#list" role="tab" aria-controls="pills-list" aria-selected="false">Danh sách sinh viên</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#statistics" role="tab" aria-controls="pills-statistics" aria-selected="false">Thống kê</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <!-- Kết thúc phần menu -->
+
+      <div class="col-12 col-md-10 p-0">
+        <div class="tab-content">
+          <!-- Phần nhập mới thông tin sinh viên -->
+          <div class="tab-pane fade show active" id="form" role="tabpanel" aria-labelledby="pills-form-tab">
+            <form action="#" method="post" class="formSinhVien">
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="input-contain">
+                    <input type="text" id="mssv" name="mssv" required onblur="kiemTraMSSV();" onfocus="resetTB('thongbaoMSSV');">
+                    <span class="highlight"></span>
+                    <label>Mã số sinh viên</label>
+                    <p id="thongbaoMSSV"></p>
+                  </div>
+                  <div class="input-contain">
+                    <input type="text" id="hoTen" name="hoTen" required onblur="KiemTraHoTen();" onfocus="resetTB('thongbaoHoTen')">
+                    <span class="highlight"></span>
+                    <label>Họ tên</label>
+                    <p id="thongbaoHoTen"></p>
+                  </div>
+                  <div class="input-contain">
+                    <input type="text" id="email" name="email" required onblur="KiemTraEmail();" onfocus="resetTB('thongbaoEmail')">
+                    <span class="highlight"></span>
+                    <label>Email</label>
+                    <p id="thongbaoEmail"></p>
+                  </div>
+                  <div class="input-contain">
+                    <input type="text" id="soDienThoai" name="soDienThoai" required onblur="KiemTraSoDT();" onfocus="resetTB('thongbaoSDT')">
+                    <span class="highlight"></span>
+                    <label>Số điện thoại</label>
+                    <p id="thongbaoSDT"></p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <select name="chuyenNganh" id="chuyenNganh" class="form-control" onblur="kiemTraChuyenNganh()">
+                      <option selected disabled value="1">Chuyên ngành</option>
+                      <option value="Hệ thống mạng">Hệ thống mạng</option>
+                      <option value="Lập trình web">Lập trình web</option>
+                      <option value="Kế toán">Kế toán</option>
+                      <option value="Quản trị kinh doanh">Quản trị kinh doanh</option>
+                    </select>
+                    <span id="thongbaoChuyenNganh"></span>
+                  </div>
+                  <div class="input-contain">
+                    <input type="text" id="diemToan" name="diemToan" required onblur="KiemTraToan();" onfocus="resetTBD('thongbaoToan')">
+                    <span class="highlight"></span>
+                    <label>Điểm toán</label>
+                    <p id="thongbaoToan"></p>
+                  </div>
+                  <div class="input-contain">
+                    <input type="text" id="diemLy" name="diemLy" required onblur="KiemTraLy();" onfocus="resetTBD('thongbaoLy')">
+                    <span class="highlight"></span>
+                    <label>Điểm lý</label>
+                    <p id="thongbaoLy"></p>
+                  </div>
+                  <div class="input-contain">
+                    <input type="text" id="diemHoa" name="diemHoa" required onblur="KiemTraHoa();" onfocus="resetTBD('thongbaoHoa')">
+                    <span class="highlight"></span>
+                    <label>Điểm hóa</label>
+                    <p id="thongbaoHoa"></p>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary mt-3" onclick="themSinhVien()">Thêm mới</button>
+              <button type="reset" class="btn btn-success mt-3">Nhập lại</button>
+            </form>
+          </div>
+          <!-- Kết thúc nhập thông tin sinh viên -->
+
+          <!-- Danh sách sinh viên -->
+          <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="pills-list-tab">
+            <div class="contain">
+              <div class="row">
+                <div class="col-12 col-md-3">
+                  <div class="row">
+                    <div class="col-5 pr-0">
+                      <label class="pt-2">Tìm theo:</label>
+                    </div>
+                    <div class="col-7 pl-0">
+                      <select id="timTheo" class="form-control">
+                        <option value="ten" selected>Tên</option>
+                        <option value="ma">Mã sinh viên</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-5 align-content-end">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </span>
+                    <input type="text" id="inputName" class="form-control" onkeyup="timKiemSinhVien()">
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary btnChucNang"  onclick="nhapThongTin()"><i class="fa fa-plus" aria-hidden="true"></i> Thêm mới</button>
+              <button type="button" class="btn btn-danger btnChucNang" onclick="xoaSinhVien()"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</button>
+              <button type="button" class="btn btn-info btnChucNang" onclick="suaSinhVien()" data-toggle="modal" data-target="#capnhat"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</button>
+              <!-- <button type="button" class="btn btn-primary btnChucNang" onclick="layDulieu()">Lấy dữ liệu</button>
+              <button type="button" class="btn btn-primary btnChucNang" onclick="luuDuLieu()">Lưu dữ liệu</button> -->
+              <div class="list-contain mt-4">
+                <table class="table table-responsive-md myTable">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Chọn</th>
+                      <th scope="col">Mã sinh viên</th>
+                      <th scope="col">Họ tên</th>
+                      <th scope="col">Số điện thoại</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">
+                        Chuyên ngành
+                        <select id="sapXepTheoNganh" class="form-control form-control-sm" onchange="sapXepTheoChuyenNganh()">
+                          <option value="all">Tất cả</option>
+                          <option value="Hệ thống mạng">Hệ thống mạng</option>
+                          <option value="Lập trình web">Lập trình web</option>
+                          <option value="Kế toán">Kế toán</option>
+                          <option value="Quản trị kinh doanh">Quản trị kinh doanh</option>
+                        </select>
+                      </th>
+                      <th scope="col">Điểm trung bình</th>
+                      <th scope="col">Xếp loại</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tableBody">
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="modal fade" id="capnhat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Cập nhật thông tin sinh viên</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="#" method="post" class="formSinhVien">
+                        <div class="row">
+                          <div class="col-12 col-md-6">
+                            <div class="input-contain">
+                              <input type="text" id="modal-mssv" name="mssv" required onblur="kiemTraMSSV();" onfocus="resetTB('modal-thongbaoMSSV');">
+                              <span class="highlight"></span>
+                              <label>Mã số sinh viên</label>
+                              <p id="modal-thongbaoMSSV"></p>
+                            </div>
+                            <div class="input-contain">
+                              <input type="text" id="modal-hoTen" name="hoTen" required onblur="KiemTraHoTen();" onfocus="resetTB('modal-thongbaoHoTen')">
+                              <span class="highlight"></span>
+                              <label>Họ tên</label>
+                              <p id="modal-thongbaoHoTen"></p>
+                            </div>
+                            <div class="input-contain">
+                              <input type="text" id="modal-email" name="email" required onblur="KiemTraEmail();" onfocus="resetTB('modal-thongbaoEmail')">
+                              <span class="highlight"></span>
+                              <label>Email</label>
+                              <p id="modal-thongbaoEmail"></p>
+                            </div>
+                            <div class="input-contain">
+                              <input type="text" id="modal-soDienThoai" name="soDienThoai" required onblur="KiemTraSoDT();" onfocus="resetTB('modal-thongbaoSDT')">
+                              <span class="highlight"></span>
+                              <label>Số điện thoại</label>
+                              <p id="modal-thongbaoSDT"></p>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <div class="form-group">
+                              <select name="chuyenNganh" id="modal-chuyenNganh" class="form-control" onblur="kiemTraChuyenNganh()">
+                                <option selected disabled value="1">Chuyên ngành</option>
+                                <option value="Hệ thống mạng">Hệ thống mạng</option>
+                                <option value="Lập trình web">Lập trình web</option>
+                                <option value="Kế toán">Kế toán</option>
+                                <option value="Quản trị kinh doanh">Quản trị kinh doanh</option>
+                              </select>
+                              <span id="modal-thongbaoChuyenNganh"></span>
+                            </div>
+                            <div class="input-contain">
+                              <input type="text" id="modal-diemToan" name="diemToan" required onblur="KiemTraToan();" onfocus="resetTBD('modal-thongbaoToan')">
+                              <span class="highlight"></span>
+                              <label>Điểm toán</label>
+                              <p id="modal-thongbaoToan"></p>
+                            </div>
+                            <div class="input-contain">
+                              <input type="text" id="modal-diemLy" name="diemLy" required onblur="KiemTraLy();" onfocus="resetTBD('modal-thongbaoLy')">
+                              <span class="highlight"></span>
+                              <label>Điểm lý</label>
+                              <p id="modal-thongbaoLy"></p>
+                            </div>
+                            <div class="input-contain">
+                              <input type="text" id="modal-diemHoa" name="diemHoa" required onblur="KiemTraHoa();" onfocus="resetTBD('modal-thongbaoHoa')">
+                              <span class="highlight"></span>
+                              <label>Điểm hóa</label>
+                              <p id="modal-thongbaoHoa"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                      <button type="button" class="btn btn-primary">Cập nhật</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Kết thúc danh sách sinh viên -->
+
+          <div class="tab-pane fade" id="statistics" role="tabpanel" aria-labelledby="pills-statistics-tab">3</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Javascripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="./js/validation.js"></script>
+  <script src="./js/SinhVien.js"></script>
+  <script src="./js/DanhSachSV.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
