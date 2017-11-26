@@ -144,8 +144,8 @@
                 </div>
               </div>
               <button type="button" class="btn btn-primary btnChucNang"  onclick="nhapThongTin()"><i class="fa fa-plus" aria-hidden="true"></i> Thêm mới</button>
-              <button type="button" class="btn btn-danger btnChucNang" onclick="xoaSinhVien()"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</button>
-              <button type="button" class="btn btn-info btnChucNang" onclick="suaSinhVien()" data-toggle="modal" data-target="#capnhat"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</button>
+              <button type="button" class="btn btn-danger btnChucNang" id="xoa" onclick="xoaSinhVien()"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</button>
+              <button type="button" class="btn btn-info btnChucNang" id="sua" onclick="fillDuLieu()" data-toggle="modal" data-target="#capnhat"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</button>
               <!-- <button type="button" class="btn btn-primary btnChucNang" onclick="layDulieu()">Lấy dữ liệu</button>
               <button type="button" class="btn btn-primary btnChucNang" onclick="luuDuLieu()">Lưu dữ liệu</button> -->
               <div class="list-contain mt-4">
@@ -190,7 +190,7 @@
                         <div class="row">
                           <div class="col-12 col-md-6">
                             <div class="input-contain">
-                              <input type="text" id="modal-mssv" name="mssv" required onblur="kiemTraMSSV();" onfocus="resetTB('modal-thongbaoMSSV');">
+                              <input type="text" id="modal-mssv" disabled name="mssv" required onblur="kiemTraMSSV();" onfocus="resetTB('modal-thongbaoMSSV');">
                               <span class="highlight"></span>
                               <label>Mã số sinh viên</label>
                               <p id="modal-thongbaoMSSV"></p>
@@ -249,7 +249,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
-                      <button type="button" class="btn btn-primary">Cập nhật</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="suaSinhVien()">Cập nhật</button>
                     </div>
                   </div>
                 </div>

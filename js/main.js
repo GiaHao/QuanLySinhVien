@@ -33,24 +33,112 @@ function themSinhVien() {
 }
 
 function xoaSinhVien() {
+  var flag = 0;
   var checkbox = document.getElementsByClassName("custom-control-input");
   var maSV = [];
   for (var i = 0; i < checkbox.length; i++) {
     if(checkbox[i].checked) {
       maSV.push(checkbox[i].id);
+      flag++;
     }
   }
 
+  if (flag == 0) {
+    swal("Vui lòng chọn trước!", {
+      buttons: false,
+      icon: "error",
+      timer: 2000,
+    });
+  } else if (flag >= 1) {
+    swal({
+      title: "Bạn có muốn xóa không?",
+      text: "Dữ liệu đã xóa không thể khôi phục!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        danhSachSV.xoa(maSV);
+        swal("Sinh viên bạn chọn đã xóa!", {
+          icon: "success",
+          buttons: false,
+          timer: 2000,
+        });
+        capNhatDanhSach(danhSachSV);
+      }
+    });
+  }
+}
+
+function fillDuLieu() {
+  var flag = 0;
+  var maso;
+  var chkMaSo = document.getElementsByClassName('custom-control-input');
+  var btnSua = document.getElementById('sua');
+  for (var i = 0; i < chkMaSo.length; i++) {
+    if (chkMaSo[i].checked) {
+      flag++;
+      maso = chkMaSo[i].id;
+    }
+  }
+
+  if (flag == 0) {
+    btnSua.disabled = true;
+    swal("Vui lòng chọn trước!", {
+      buttons: false,
+      icon: "error",
+      timer: 2000,
+    });
+  } else if (flag > 1) {
+    btnSua.disabled = true;
+    swal("Chỉ có thể chọn 1 thôi!", {
+      buttons: false,
+      icon: "error",
+      timer: 2000,
+    });
+  }
+
+  for (var j = 0; j < danhSachSV.mangSinhVien.length; j++) {
+    if (danhSachSV.mangSinhVien[j].mssv == maso) {
+      document.getElementById('modal-mssv').value = danhSachSV.mangSinhVien[j].mssv;
+      document.getElementById('modal-hoTen').value = danhSachSV.mangSinhVien[j].hoTen;
+      document.getElementById('modal-email').value = danhSachSV.mangSinhVien[j].email;
+      document.getElementById('modal-soDienThoai').value = danhSachSV.mangSinhVien[j].soDienThoai;
+      document.getElementById('modal-chuyenNganh').value = danhSachSV.mangSinhVien[j].chuyenNganh;
+      document.getElementById('modal-diemToan').value = danhSachSV.mangSinhVien[j].toan;
+      document.getElementById('modal-diemLy').value = danhSachSV.mangSinhVien[j].ly;
+      document.getElementById('modal-diemHoa').value = danhSachSV.mangSinhVien[j].hoa;
+    }
+  }
+}
+
+function checkChange() {
+  var btnSua = document.getElementById("sua");
+  btnSua.disabled = false;
+}
+
+function suaSinhVien() {
+  var maSo = document.getElementById('modal-mssv').value;
+  var hoTen = document.getElementById('modal-hoTen').value;
+  var email = document.getElementById('modal-email').value;
+  var soDienThoai = document.getElementById('modal-soDienThoai').value;
+  var chuyenNganh = document.getElementById('modal-chuyenNganh').value;
+  var diemToan = document.getElementById('modal-diemToan').value;
+  var diemLy = document.getElementById('modal-diemLy').value;
+  var diemHoa = document.getElementById('modal-diemHoa').value;
+
+  var sinhVien = new SinhVien(maSo, hoTen, soDienThoai, email, chuyenNganh, diemToan, diemLy, diemHoa);
+  
   swal({
-    title: "Bạn có muốn xóa không?",
-    text: "Dữ liệu đã xóa không thể khôi phục!",
+    title: "Bạn có muốn sửa thông tin lại không?",
     icon: "warning",
     buttons: true,
     dangerMode: true,
   })
   .then((willDelete) => {
     if (willDelete) {
-      danhSachSV.xoa(maSV);
+      danhSachSV.sua(maSo, sinhVien);
       swal("Sinh viên bạn chọn đã xóa!", {
         icon: "success",
         buttons: false,
@@ -59,61 +147,6 @@ function xoaSinhVien() {
       capNhatDanhSach(danhSachSV);
     }
   });
-}
-
-function suaSinhVien() {
-  var maSV = document.getElementById('modal-mssv');
-  var hoTen = document.getElementById('modal-hoTen');
-  var email = document.getElementById('modal-email');
-  var soDienThoai = document.getElementById('modal-soDienThoai');
-  var chuyenNganh = document.getElementById('modal-chuyenNganh');
-  var diemToan = document.getElementById('modal-diemToan');
-  var diemLy = document.getElementById('modal-diemLy');
-  var diemHoa = document.getElementById('modal-diemHoa');
-  var checkbox = document.getElementsByClassName("custom-control-input");
-  var mangms = [];
-
-  for (var i = 0; i < checkbox.length; i++) {
-    if(checkbox[i].checked) {
-      mangms.push(checkbox[i].id);
-    }
-  }
-
-  if (mangms.length == 1) {
-    for (var i = 0; i < danhSachSV.mangSinhVien.length; i++) {
-      if (danhSachSV.mangSinhVien[i].mssv == mangms[0]) {
-        maSV.setAttribute('value', mangms[0]);
-        hoTen.setAttribute('value', danhSachSV.mangSinhVien[i].hoTen);
-        email.setAttribute('value', danhSachSV.mangSinhVien[i].email);
-        soDienThoai.setAttribute('value', danhSachSV.mangSinhVien[i].soDienThoai);
-        chuyenNganh.setAttribute('value', danhSachSV.mangSinhVien[i].chuyenNganh);
-        diemToan.setAttribute('value', danhSachSV.mangSinhVien[i].toan);
-        diemLy.setAttribute('value', danhSachSV.mangSinhVien[i].ly);
-        diemHoa.setAttribute('value', danhSachSV.mangSinhVien[i].hoa);
-      }
-    }
-    var sinhVien = new SinhVien(maSV, hoTen, soDienThoai, email, chuyenNganh, diemToan, diemLy, diemHoa);
-    danhSachSV.sua(mangms[0], sinhVien);
-    capNhatDanhSach(danhSachSV);
-  }
-
-  
-  // if (KiemTraHoTen() && kiemTraMSSV() && KiemTraSoDT() && kiemTraChuyenNganh()
-  // && KiemTraHoa() && KiemTraToan() && KiemTraLy() && KiemTraEmail()) {
-  //   danhSachSV.them(sinhVien);
-  //   capNhatDanhSach(danhSachSV);
-  //   swal("Thêm thành công!", {
-  //      buttons: false,
-  //      icon: "success",
-  //      timer: 2000,
-  //    });
-  //  } else {
-  //   swal("Thêm không thành công!", {
-  //     buttons: false,
-  //     icon: "error",
-  //     timer: 2000,
-  //   });
-  //  }
 }
 
 function taoTheTd(value) {
@@ -145,6 +178,7 @@ function capNhatDanhSach(dsSinhVien) {
     checkBox.type = 'checkbox';
     checkBox.className = "custom-control-input";
     checkBox.id = dsSinhVien.mangSinhVien[i].mssv;
+    checkBox.setAttribute("onchange", "checkChange()");
     var span = document.createElement('span');
     span.className = "custom-control-indicator";
     label.appendChild(checkBox);

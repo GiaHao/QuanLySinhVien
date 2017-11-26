@@ -72,7 +72,7 @@ body {
         background-color: transparent;
         outline: none;
         width: 80%; }
-        .tab-pane .formSinhVien .input-contain input:focus ~ label, .tab-pane .formSinhVien .input-contain input:valid ~ label {
+        .tab-pane .formSinhVien .input-contain input:focus ~ label, .tab-pane .formSinhVien .input-contain input:valid ~ label, .tab-pane .formSinhVien .input-contain input:disabled ~ label {
           top: -10px;
           left: 0;
           font-size: .8rem;

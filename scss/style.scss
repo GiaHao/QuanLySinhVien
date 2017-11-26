@@ -121,7 +121,8 @@ body {
         width: 80%;
 
         &:focus ~ label,
-        &:valid ~ label {
+        &:valid ~ label,
+        &:disabled ~ label {
           top: -10px;
           left: 0;
           font-size: .8rem;

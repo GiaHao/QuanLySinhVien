@@ -18,6 +18,13 @@ function DanhSachSinhVien() {
   this.sua = function(maso, sinhvien) {
     for (var i = 0; i < this.mangSinhVien.length; i++) {
       if(this.mangSinhVien[i].mssv == maso) {
+        // this.mangSinhVien[i].hoTen = sinhvien.hoTen;
+        // this.mangSinhVien[i].email = sinhvien.email;
+        // this.mangSinhVien[i].soDienThoai = sinhvien.soDienThoai;
+        // this.mangSinhVien[i].chuyenNganh = sinhvien.chuyenNganh;
+        // this.mangSinhVien[i].toan = sinhvien.toan;
+        // this.mangSinhVien[i].ly = sinhvien.ly;
+        // this.mangSinhVien[i].hoa = sinhvien.hoa;
         this.mangSinhVien[i] = sinhvien;
       }
     } 
