@@ -97,18 +97,18 @@ function fillDuLieu() {
       icon: "error",
       timer: 2000,
     });
-  }
-
-  for (var j = 0; j < danhSachSV.mangSinhVien.length; j++) {
-    if (danhSachSV.mangSinhVien[j].mssv == maso) {
-      document.getElementById('modal-mssv').value = danhSachSV.mangSinhVien[j].mssv;
-      document.getElementById('modal-hoTen').value = danhSachSV.mangSinhVien[j].hoTen;
-      document.getElementById('modal-email').value = danhSachSV.mangSinhVien[j].email;
-      document.getElementById('modal-soDienThoai').value = danhSachSV.mangSinhVien[j].soDienThoai;
-      document.getElementById('modal-chuyenNganh').value = danhSachSV.mangSinhVien[j].chuyenNganh;
-      document.getElementById('modal-diemToan').value = danhSachSV.mangSinhVien[j].toan;
-      document.getElementById('modal-diemLy').value = danhSachSV.mangSinhVien[j].ly;
-      document.getElementById('modal-diemHoa').value = danhSachSV.mangSinhVien[j].hoa;
+  } else if (flag == 1) {
+    for (var j = 0; j < danhSachSV.mangSinhVien.length; j++) {
+      if (danhSachSV.mangSinhVien[j].mssv == maso) {
+        document.getElementById('modal-mssv').value = danhSachSV.mangSinhVien[j].mssv;
+        document.getElementById('modal-hoTen').value = danhSachSV.mangSinhVien[j].hoTen;
+        document.getElementById('modal-email').value = danhSachSV.mangSinhVien[j].email;
+        document.getElementById('modal-soDienThoai').value = danhSachSV.mangSinhVien[j].soDienThoai;
+        document.getElementById('modal-chuyenNganh').value = danhSachSV.mangSinhVien[j].chuyenNganh;
+        document.getElementById('modal-diemToan').value = danhSachSV.mangSinhVien[j].toan;
+        document.getElementById('modal-diemLy').value = danhSachSV.mangSinhVien[j].ly;
+        document.getElementById('modal-diemHoa').value = danhSachSV.mangSinhVien[j].hoa;
+      }
     }
   }
 }
