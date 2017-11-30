@@ -146,6 +146,8 @@ body {
       background-color: rgba(255, 255, 255, 0.8);
       height: 350px;
       overflow-y: auto; }
+    #list .contain .btnTop {
+      width: 157px; }
   #list .myTable th {
     vertical-align: middle; }
   #list .modal-body .formSinhVien {

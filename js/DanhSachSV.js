@@ -18,13 +18,6 @@ function DanhSachSinhVien() {
   this.sua = function(maso, sinhvien) {
     for (var i = 0; i < this.mangSinhVien.length; i++) {
       if(this.mangSinhVien[i].mssv == maso) {
-        // this.mangSinhVien[i].hoTen = sinhvien.hoTen;
-        // this.mangSinhVien[i].email = sinhvien.email;
-        // this.mangSinhVien[i].soDienThoai = sinhvien.soDienThoai;
-        // this.mangSinhVien[i].chuyenNganh = sinhvien.chuyenNganh;
-        // this.mangSinhVien[i].toan = sinhvien.toan;
-        // this.mangSinhVien[i].ly = sinhvien.ly;
-        // this.mangSinhVien[i].hoa = sinhvien.hoa;
         this.mangSinhVien[i] = sinhvien;
       }
     } 
@@ -41,14 +34,14 @@ function DanhSachSinhVien() {
         }
       }
     } else if(value == 'ma') {
-      for (var i = 0; i < this.mangSinhVien.length; i++) {
-        if(this.mangSinhVien[i].mssv.search(tukhoa) != -1) {
-          dsSinhVienTimThay.them(this.mangSinhVien[i]);
+      for (var j = 0; j < this.mangSinhVien.length; j++) {
+        if(this.mangSinhVien[j].mssv.search(tukhoa) != -1) {
+          dsSinhVienTimThay.them(this.mangSinhVien[j]);
         }
       }
     }
     return dsSinhVienTimThay;
-  }
+  };
 
   this.sapXepChuyenNganh = function(tukhoa) {
     var dsSinhVienChuyenNganh = new DanhSachSinhVien();
@@ -58,5 +51,5 @@ function DanhSachSinhVien() {
       }
     }
     return dsSinhVienChuyenNganh;
-  }
+  };
 }

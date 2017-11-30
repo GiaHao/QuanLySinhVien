@@ -12,8 +12,8 @@ function themSinhVien() {
 
   var sinhVien = new SinhVien(maSV, hoTen, soDienThoai, email, chuyenNganh, diemToan, diemLy, diemHoa);
   
-  if (KiemTraHoTen() && kiemTraMSSV() && KiemTraSoDT() && kiemTraChuyenNganh()
-  && KiemTraHoa() && KiemTraToan() && KiemTraLy() && KiemTraEmail()) {
+  if (KiemTraHoTen() && kiemTraMSSV() && KiemTraSoDT() && kiemTraChuyenNganh() && 
+   KiemTraHoa() && KiemTraToan() && KiemTraLy() && KiemTraEmail()) {
     danhSachSV.them(sinhVien);
     capNhatDanhSach(danhSachSV);
     swal("Thêm thành công!", {
@@ -149,6 +149,12 @@ function suaSinhVien() {
   });
 }
 
+function DanhSachTopSV() {
+  var dsTopSinhVien = danhSachSV.mangSinhVien;
+  dsTopSinhVien.sort(function(a, b) {return b.diemTB() - a.diemTB();});
+  capNhatTopSV(dsTopSinhVien);
+}
+
 function taoTheTd(value) {
   var td = document.createElement('td');
   td.innerHTML = value;
@@ -186,6 +192,35 @@ function capNhatDanhSach(dsSinhVien) {
 
     tdChon.appendChild(label);
     row.appendChild(tdChon);
+    row.appendChild(tdMasv);
+    row.appendChild(tdHoten);
+    row.appendChild(tdSodienthoai);
+    row.appendChild(tdEmail);
+    row.appendChild(tdChuyennganh);
+    row.appendChild(tdDiem);
+    row.appendChild(tdXeploai);
+
+    table.appendChild(row);
+  }
+}
+
+function capNhatTopSV(dsSinhVien) {
+  var table = document.getElementById('tableBodyTopSV');
+  table.innerHTML = '';
+
+  for (var i = 0; i < 10; i++) {
+    var sv = dsSinhVien[i];
+    var row = document.createElement('tr');
+    var tdStt = taoTheTd(i+1);
+    var tdMasv = taoTheTd(sv.mssv);
+    var tdHoten = taoTheTd(sv.hoTen);
+    var tdSodienthoai = taoTheTd(sv.soDienThoai);
+    var tdEmail = taoTheTd(sv.email);
+    var tdChuyennganh = taoTheTd(sv.chuyenNganh);
+    var tdDiem = taoTheTd(sv.diemTB());
+    var tdXeploai = taoTheTd(sv.xepLoai());
+
+    row.appendChild(tdStt);
     row.appendChild(tdMasv);
     row.appendChild(tdHoten);
     row.appendChild(tdSodienthoai);

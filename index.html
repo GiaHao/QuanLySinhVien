@@ -143,9 +143,14 @@
                   </div>
                 </div>
               </div>
-              <button type="button" class="btn btn-primary btnChucNang"  onclick="nhapThongTin()"><i class="fa fa-plus" aria-hidden="true"></i> Thêm mới</button>
-              <button type="button" class="btn btn-danger btnChucNang" id="xoa" onclick="xoaSinhVien()"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</button>
-              <button type="button" class="btn btn-info btnChucNang" id="sua" onclick="fillDuLieu()" data-toggle="modal" data-target="#capnhat"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</button>
+              <button type="button" class="btn btn-primary btnChucNang" onclick="nhapThongTin()">
+                <i class="fa fa-plus" aria-hidden="true"></i> Thêm mới</button>
+              <button type="button" class="btn btn-danger btnChucNang" id="xoa" onclick="xoaSinhVien()">
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</button>
+              <button type="button" class="btn btn-info btnChucNang" id="sua" onclick="fillDuLieu()" data-toggle="modal" data-target="#capnhat">
+                <i class="fa fa-pencil" aria-hidden="true"></i> Sửa</button>
+              <button type="button" class="btn btn-success btnChucNang btnTop" onclick="DanhSachTopSV()" data-toggle="modal" data-target="#topSinhVien">
+                <i class="fa fa-list" aria-hidden="true"></i> Top 10 sinh viên</button>
               <!-- <button type="button" class="btn btn-primary btnChucNang" onclick="layDulieu()">Lấy dữ liệu</button>
               <button type="button" class="btn btn-primary btnChucNang" onclick="luuDuLieu()">Lưu dữ liệu</button> -->
               <div class="list-contain mt-4">
@@ -176,6 +181,7 @@
                 </table>
               </div>
 
+              <!-- Modal form chỉnh sửa thông tin -->
               <div class="modal fade" id="capnhat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -250,6 +256,41 @@
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
                       <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="suaSinhVien()">Cập nhật</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal top 10 sinh viên -->
+              <div class="modal fade" id="topSinhVien" tabindex="-1" role="dialog" aria-labelledby="topsinhvien" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="topsinhvien">Top 10 sinh viên</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table table-responsive-md myTable">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Hạng</th>
+                            <th scope="col">Mã sinh viên</th>
+                            <th scope="col">Họ tên</th>
+                            <th scope="col">Số điện thoại</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Chuyên ngành</th>
+                            <th scope="col">Điểm trung bình</th>
+                            <th scope="col">Xếp loại</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tableBodyTopSV">
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                     </div>
                   </div>
                 </div>
